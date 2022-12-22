@@ -10,3 +10,11 @@ sorts of cool analytics.
 
 The CLI is effectively a port of
 [`adr-tools`](https://github.com/npryce/adr-tools).
+
+## Contributing
+
+### Nightly Rust
+
+```shell
+rustup default nightly
+```

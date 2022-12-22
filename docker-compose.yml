@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   db:
-    image: surrealdb/surrealdb:latest
+    image: surrealdb/surrealdb:nightly
     ports:
       - "127.0.0.1:8000:8000"
     command: ["start", "--log", "trace", "--user", "root", "--pass", "root", "memory"]
