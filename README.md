@@ -18,3 +18,15 @@ The CLI is effectively a port of
 ```shell
 rustup default nightly
 ```
+
+### Spin up SurrealDB
+
+```shell
+docker compose up
+```
+
+### Run CLI
+
+```shell
+cargo run
+```
