@@ -1,32 +1,16 @@
 extern crate core;
 
 mod ingest;
-use serde::{Deserialize, Serialize};
+mod types;
+use types::{ADR, Author};
+
 use serde_json::json;
-use std::borrow::Cow;
-use std::path::Path;
 use surrealdb_rs::param::Root;
 use surrealdb_rs::protocol::Ws;
 use surrealdb_rs::{Result, Surreal};
-use chrono::prelude::*;
+use chrono::offset::{Utc};
 
 // use log::{info};
-
-#[derive(Serialize, Deserialize)]
-struct Author {
-    first: Cow<'static, str>,
-    last: Cow<'static, str>,
-}
-
-#[derive(Serialize, Deserialize)]
-struct ADR {
-    #[serde(skip_serializing)]
-    id: Option<String>,
-    title: Cow<'static, str>,
-    time: DateTime<Utc>,
-    name: Author,
-    draft: bool,
-}
 
 #[tokio::main]
 async fn main() -> Result<()> {
