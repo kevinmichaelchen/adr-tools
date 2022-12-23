@@ -28,7 +28,7 @@ struct ADR {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    ingest::ingest(Path::new("."));
+    ingest::ingest("**/*.md");
     // env_logger::init();
 
     // info!(target: "db_events", "Connecting to DB: {:?}", addr);
