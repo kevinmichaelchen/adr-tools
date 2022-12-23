@@ -1,3 +1,5 @@
+extern crate core;
+
 mod ingest;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
@@ -28,7 +30,10 @@ struct ADR {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    ingest::ingest("**/*.md");
+    ingest::ingest(
+        // Path::new(".")
+        std::env::current_dir().unwrap().as_ref()
+    );
     // env_logger::init();
 
     // info!(target: "db_events", "Connecting to DB: {:?}", addr);
