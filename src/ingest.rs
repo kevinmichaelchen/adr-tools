@@ -31,15 +31,5 @@ pub fn ingest(path: &Path) {
 }
 
 fn get_paths(pattern: &str) -> Vec<PathBuf> {
-    let mut out: Vec<PathBuf> = Vec::new();
-    for entry in glob(pattern).expect("Failed to read glob pattern") {
-        match entry {
-            Ok(path) => {
-                println!("{:?}", path.display());
-                out.push(path);
-            },
-            Err(e) => println!("{:?}", e),
-        }
-    }
-    out
+    glob(pattern).unwrap().filter_map(Result::ok).collect()
 }
