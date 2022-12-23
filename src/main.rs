@@ -1,12 +1,14 @@
+mod ingest;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::borrow::Cow;
+use std::path::Path;
 use surrealdb_rs::param::Root;
 use surrealdb_rs::protocol::Ws;
 use surrealdb_rs::{Result, Surreal};
 use chrono::prelude::*;
 
-use log::{info};
+// use log::{info};
 
 #[derive(Serialize, Deserialize)]
 struct Author {
@@ -26,6 +28,7 @@ struct ADR {
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    ingest::ingest(Path::new("."));
     // env_logger::init();
 
     // info!(target: "db_events", "Connecting to DB: {:?}", addr);
